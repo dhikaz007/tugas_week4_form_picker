@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'widget/list_icon_widget.dart';
+import '../../widget/list_icon_widget.dart';
+import '../auth/login_page.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -11,10 +12,10 @@ class MenuPage extends StatelessWidget {
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
         itemCount: iconsList.length,
-        itemBuilder: (context, index) => _choiceMenu(index));
+        itemBuilder: (context, index) => _choiceMenu(context, index));
   }
 
-  _choiceMenu(int index) {
+  _choiceMenu(BuildContext context, int index) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +31,11 @@ class MenuPage extends StatelessWidget {
                   child: Icon(iconsList[index].icon,
                       color: Colors.amberAccent, size: 50))),
           onTap: () {
-            debugPrint('TAPPED');
+            if (index == 10) {
+              goToLoginPage(context);
+            } else {
+              return;
+            }
           },
         ),
         const SizedBox(height: 8.0),
@@ -42,5 +47,10 @@ class MenuPage extends StatelessWidget {
             )),
       ],
     );
+  }
+
+  goToLoginPage(context) {
+    final route = MaterialPageRoute(builder: (context) => LoginPage());
+    Navigator.push(context, route);
   }
 }

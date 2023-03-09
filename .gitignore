@@ -9,7 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
-pubspec.lock
+
 
 # IntelliJ related
 *.iml
@@ -32,6 +32,8 @@ pubspec.lock
 .pub-cache/
 .pub/
 /build/
+pubspec.lock
+/test/
 
 # Symbolication related
 app.*.symbols
